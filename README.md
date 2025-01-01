@@ -1,7 +1,7 @@
-# javanshir-ha
+# Javanshir Home Assistant repo 
 Home assistant configuration files.
 
 
-Here one screen shot taken from live flooplan:
+Here is one screenshot taken from the live flooplan:
 
 ![Screenshot](www/screenshot.png)
