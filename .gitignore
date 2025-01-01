@@ -15,3 +15,4 @@ known_devices.yaml
 home-assistant*.db*
 custom_components
 www/community
+!www/*.png
