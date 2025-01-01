@@ -1,4 +1,4 @@
 # javanshir-ha
 Home assistant configuration
 
-![Screenshot](armin.png)
+![Screenshot](www/Guldringen.png)
