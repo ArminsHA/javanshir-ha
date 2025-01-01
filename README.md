@@ -1,4 +1,7 @@
 # javanshir-ha
-Home assistant configuration
+Home assistant configuration files.
 
-![Screenshot](www/Guldringen.png)
+
+Here one screen shot taken from live flooplan:
+
+![Screenshot](www/screenshot.png)
