@@ -1,0 +1,24 @@
+# Zones
+- name: Home
+  latitude: !secret latitude
+  longitude: !secret longitude
+  radius: 60
+  icon: mdi:home
+- name: Ericsson
+  latitude: 57.70585
+  longitude: 11.938767
+  radius: 500
+  icon: mdi:briefcase
+- name: Bränno förskola
+  latitude: 57.640483
+  longitude: 11.779811
+  radius: 250
+  icon: mdi:school
+- name: Sandra förskola
+  latitude: 57.691583
+  longitude: 11.919200
+  icon: mdi:school
+- name: Saltholmen
+  latitude: 57.661069
+  longitude: 11.843088
+  radius: 250

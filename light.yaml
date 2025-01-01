@@ -1,0 +1,15 @@
+# Light support
+# Hue serial numbers can be found in secrets.yaml
+
+- platform: group
+  name: Kitchen Spots
+  entities:
+    - light.kitchen_spot1
+    - light.kitchen_spot2
+    - light.kitchen_spot3
+
+- platform: group
+  name: All lights
+  entities:
+    - light.gast_rum_switch_1
+    - light.lan01

@@ -1,0 +1,278 @@
+- id: '1701627604961'
+  alias: Doorbell automation
+  description: ''
+  trigger:
+  - platform: device
+    type: turned_on
+    device_id: 09a7246df2c3b4bb959dc10f6179f8d9
+    entity_id: d3cbb5160ae1b75f1ede7ba980180987
+    domain: switch
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 2
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 09a7246df2c3b4bb959dc10f6179f8d9
+    entity_id: d3cbb5160ae1b75f1ede7ba980180987
+    domain: switch
+  - service: notify.mobile_app_iphone_10
+    data:
+      message: Det ringer på dörren!
+      title: Entré
+  - service: notify.mobile_app_malis_iphone
+    data:
+      message: Det ringer på dörren!
+      title: Entré
+  mode: single
+- id: '1701628493880'
+  alias: Turn off ring_call_home
+  description: ''
+  trigger:
+  - type: turned_on
+    platform: device
+    device_id: 411f35a7df9f1e4f0eb25c40219ee2db
+    entity_id: 7738b67dd3d9c4028a293cdc75a1f7b3
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 2
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 411f35a7df9f1e4f0eb25c40219ee2db
+    entity_id: 73da07d62ecac7b099581b8f1e7560e7
+    domain: switch
+  mode: single
+- id: '1701978177675'
+  alias: adventljus_onoff
+  description: Turn Adventljus in Vardagsrum on or off on swtich1
+  trigger:
+  - platform: state
+    entity_id:
+    - switch.vardagsrum_switch_1
+  condition: []
+  action:
+  - if:
+    - condition: state
+      entity_id: switch.vardagsrum_switch_1
+      state: 'off'
+    then:
+    - service: switch.turn_off
+      data: {}
+      target:
+        entity_id: switch.window
+    else:
+    - service: switch.turn_on
+      data: {}
+      target:
+        entity_id: switch.window
+  mode: single
+- id: '1701988360073'
+  alias: Guest Toa Motion-activated Light
+  description: ''
+  use_blueprint:
+    path: homeassistant/motion_light.yaml
+    input:
+      motion_entity: binary_sensor.tradfri_motion_sensor
+      light_target:
+        entity_id: light.gast_toa_switch_1
+      no_motion_wait: 300
+- id: '1701990662286'
+  alias: Laundry light automation
+  description: ''
+  trigger:
+  - platform: device
+    type: turned_on
+    device_id: edb32fa4e786978cb066758f099ad173
+    entity_id: df6542a47958bbffac66aa10462b12e0
+    domain: light
+  condition: []
+  action:
+  - if:
+    - condition: time
+      after: '23:00:00'
+      before: 06:30:00
+    then:
+    - service: light.turn_on
+      data:
+        brightness_pct: 10
+      target:
+        entity_id: light.lan01
+    else:
+    - service: light.turn_on
+      data:
+        brightness_pct: 100
+      target:
+        entity_id: light.lan01
+  mode: single
+- id: '1702330391682'
+  alias: hal_strips_off_on_sunrise
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunrise
+    offset: 0
+  condition: []
+  action:
+  - service: light.turn_off
+    data: {}
+    target:
+      entity_id:
+      - light.hal_stripe1
+      - light.hal_stripe2
+  mode: single
+- id: '1702330506463'
+  alias: hal_strips_on_on_sunset
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: 0
+  condition: []
+  action:
+  - service: light.turn_on
+    data: {}
+    target:
+      entity_id:
+      - light.hal_stripe1
+      - light.hal_stripe2
+  mode: single
+- id: '1702385578470'
+  alias: Enter-home-hall-light
+  description: ''
+  triggers:
+  - entity_id: device_tracker.malis_iphone
+    zone: zone.home
+    event: enter
+    trigger: zone
+  - entity_id: device_tracker.armins_iphone12
+    zone: zone.home
+    event: enter
+    trigger: zone
+  conditions:
+  - condition: sun
+    before: sunrise
+    after: sunset
+  - condition: not
+    conditions:
+    - condition: state
+      entity_id: binary_sensor.people_home
+      state: Home
+      attribute: device_class
+  actions:
+  - target:
+      entity_id: light.hallpanel1
+    data: {}
+    action: light.turn_on
+  - target:
+      entity_id: light.hal_lamp
+    data: {}
+    action: light.turn_on
+  mode: single
+- id: '1702388172075'
+  alias: xmas-lights-based-on-sun
+  description: ''
+  triggers:
+  - event: sunrise
+    offset: 0
+    id: xmas-lights-off
+    trigger: sun
+  - event: sunset
+    offset: 0
+    id: xmas-lights-on
+    trigger: sun
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - xmas-lights-off
+      sequence:
+      - target:
+          entity_id:
+          - switch.window
+          - switch.windows_stars
+          - switch.front_outside
+          - switch.gastrum_uttag_socket_1
+        data: {}
+        action: switch.turn_off
+    - conditions:
+      - condition: trigger
+        id:
+        - xmas-lights-on
+      sequence:
+      - target:
+          entity_id:
+          - switch.window
+          - switch.windows_stars
+          - switch.front_outside
+          - switch.gastrum_uttag_socket_1
+        data: {}
+        action: switch.turn_on
+  mode: single
+- id: '1702742710185'
+  alias: Switch-straiway-motion
+  description: ''
+  trigger:
+  - device_id: 75c1586883d844e384ddaeaf56007335
+    domain: deconz
+    platform: device
+    type: remote_button_short_press
+    subtype: turn_on
+    id: turn-on
+  - device_id: 75c1586883d844e384ddaeaf56007335
+    domain: deconz
+    platform: device
+    type: remote_button_short_press
+    subtype: turn_off
+    id: turn-off
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - turn-on
+      sequence:
+      - service: switch.turn_on
+        target:
+          entity_id: switch.stairway_sensor_motion_sensor_enabled
+        data: {}
+      - service: light.toggle
+        metadata: {}
+        data:
+          transition: 1
+        target:
+          entity_id: light.b1_lamp
+      - service: light.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: light.b1_lamp
+    - conditions:
+      - condition: trigger
+        id:
+        - turn-off
+      sequence:
+      - service: switch.turn_off
+        target:
+          entity_id: switch.stairway_sensor_motion_sensor_enabled
+        data: {}
+      - service: light.toggle
+        metadata: {}
+        data:
+          transition: 1
+        target:
+          entity_id: light.b1_lamp
+      - service: light.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: light.b1_lamp
+    - conditions: []
+      sequence: []
+  mode: single

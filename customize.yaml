@@ -1,0 +1,30 @@
+device_tracker.armins_iphone12:
+  friendly_name: Armin
+  entity_picture: /local/armin.png?v=1
+device_tracker.malis_iphone:
+  friendly_name: Mali
+  entity_picture: /local/mali.png?v=1
+# Hal
+# binary_sensor.main_door:
+#   icon: mdi:door
+light.hal_lamp:
+  icon: phu:bulbFlood
+# Kitchen
+light.panel1:
+  icon: phu:archetypesCeilingSquare
+light.kitchen_spots:
+  icon: mdi:spotlight
+light.ensis_up1:
+  icon: mdi:arrow-up-bold-circle-outline
+light.ensis_dw1:
+  icon: mdi:arrow-down-bold-circle-outline
+light.ls_left:
+  icon: mdi:led-strip-variant
+light.ls_right:
+  icon: mdi:led-strip-variant
+# Bedroom
+light.bedroomlampikea:
+  icon: mdi:ceiling-light
+# Door
+binary_sensor.main_door:
+  device_class: window

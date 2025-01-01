@@ -1,0 +1,265 @@
+# Root configuration for home assistant
+# Secrets are defined in the file secrets.yaml
+
+homeassistant:
+  name: Guldringen
+  # URL:s for accessing hass instance
+  internal_url: !secret internal_url
+  external_url: !secret external_url
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret latitude
+  longitude: !secret longitude
+  # Location country code https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements
+  country: SE
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 10
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  time_zone: Europe/Stockholm
+  # Customization files
+  customize: !include customize.yaml
+  customize_glob: !include customize_glob.yaml
+  allowlist_external_dirs:
+    - /tmp
+  auth_providers:
+    - type: homeassistant
+    - type: trusted_networks
+      trusted_networks:
+        - 192.168.2.0/24
+        - 127.0.0.1
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+# Enables the frontend
+frontend:
+  themes: !include themes.yaml
+  # extra_module_url:
+  #   - /local/hass-my_icons.js
+
+lovelace:
+  mode: yaml
+  resources:
+    # https://github.com/thomasloven/lovelace-auto-entities/
+    - url: /local/auto-entities.js
+      type: module
+    # https://github.com/Yevgenium/lovelace-weather-card-chart
+    - url: /local/weather-chart-card.js
+      type: module
+    # https://github.com/maykar/custom-header
+    - url: /local/custom-header.js?v=1.6.7
+      type: module
+    - url: /local/hass-my_icons.js
+      type: module
+    - url: /hacsfiles/clock-weather-card/clock-weather-card.js
+      type: module
+    - url: /hacsfiles/config-template-card/config-template-card.js
+      type: module
+    - url: /hacsfiles/lovelace-digital-clock/digital-clock.js
+      type: module
+    - url: /hacsfiles/lovelace-card-mod/card-mod.js
+      type: module
+    - url: /hacsfiles/atomic-calendar-revive/atomic-calendar-revive.js
+      type: module
+  # Add more dashboards
+  dashboards:
+    lovelace-widefp: # Needs to contain a hyphen (-)
+      mode: yaml
+      filename: widefp.yaml
+      title: Wide floorplan
+      icon: mdi:home
+      show_in_sidebar: true
+      require_admin: true
+
+# https://github.com/Armaell/home-assistant-custom-icons-loader
+# custom_icons:
+
+# Enables configuration UI
+config:
+
+# Configure http(s)
+http:
+  ## base_url: !secret base_url Deprecated!
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 192.168.2.0/24
+    - 172.30.33.0/24
+    - 127.0.0.1
+
+# Configure database details recording
+recorder:
+  # db_url: !secret db_url
+  purge_keep_days: 10
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+# updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+# discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+## This stops working in version 2024.10.0
+## map:
+
+# Track the sun
+sun:
+
+# Support person component
+person:
+
+# Support python scripts
+#python_script:
+
+# System health info support
+system_health:
+
+# The rfxtrx integration does not support YAML configuration
+# rfxtrx:
+#  device: /dev/ttyUSB1
+#  automatic_add: false
+#  debug: false
+#  devices:
+#    # frys_temp
+#    0a520901950080b4280169:
+#    # kyl_temp
+#    0a520903f2000041460169:
+#    # frontdoor_temp
+#    0a520900c600004c480369:
+#    # bedroom_temp
+#    0a520905470000e73e0169:
+#    # guestroom_temp
+#    0a520904690000e53d0169:
+#    # guestroom_out_temp
+#    0a520913a80000f53c0169:
+#    # sandraroom_temp
+#    0a520901230000e0430159:
+#    # main_door
+#    0b11004a02ae03fa10010f60:
+#      device_class: door
+
+# The Generic IP Camera YAML configuration is being removed
+# camera:
+#  - platform: generic
+#    name: Yr Weather
+#    still_image_url: !secret yr_svg_url
+#    content_type: 'image/svg+xml'
+
+# Scene selector
+input_select:
+  scen:
+    name: Scen
+    options:
+      - Flux
+      - Inget
+      - Energise
+      - Concentrate
+      - Bright
+      - Read
+      - Dimmed
+      - Nightlight
+      - Savanna sunset
+      - Tropical twilight
+      - Arctic aurora
+      - Spring blossom
+    initial: Flux
+    icon: mdi:theme-light-dark
+scene:
+  - name: Flux
+    entities:
+      input_select.scen:
+        state: on
+        option: Flux
+  - name: Inget
+    entities:
+      input_select.scen:
+        state: off
+        option: Inget
+  - name: Energi
+    entities:
+      input_select.scen:
+        state: on
+        option: Energise
+  - name: Koncentration
+    entities:
+      input_select.scen:
+        state: on
+        option: Concentrate
+  - name: Ljust
+    entities:
+      input_select.scen:
+        state: on
+        option: Bright
+  - name: Läs
+    entities:
+      input_select.scen:
+        state: on
+        option: Read
+  - name: Dimmat
+    entities:
+      input_select.scen:
+        state: on
+        option: Dimmed
+  - name: Nattljus
+    entities:
+      input_select.scen:
+        state: on
+        option: Nightlight
+  - name: Skymning
+    entities:
+      input_select.scen:
+        state: on
+        option: Tropical twilight
+  - name: Solnedgång
+    entities:
+      input_select.scen:
+        state: on
+        option: Savanna sunset
+  - name: Frost
+    entities:
+      input_select.scen:
+        state: on
+        option: Arctic aurora
+  - name: Vårblommor
+    entities:
+      input_select.scen:
+        state: on
+        option: Spring blossom
+
+# Includes of other config files
+zone: !include zone.yaml
+sensor: !include sensor.yaml
+binary_sensor: !include binary_sensor.yaml
+#switch: !include switch.yaml
+light: !include light.yaml
+#google_assistant: !include google_assistant.yaml
+#automation old: !include automation_manual.yaml
+#script: !include script.yaml
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+#scene: !include scenes.yaml
+
+#icloud:
+#  - username: !secret armin_icloud_usr
+#    password: !secret armin_icloud_pwd

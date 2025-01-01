@@ -1,0 +1,17 @@
+ring_call_home:
+  alias: ring_call_home
+  sequence:
+  - service: switch.turn_on
+    data: {}
+    target:
+      entity_id: switch.ring_call_home
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.ring_call_home
+  mode: single

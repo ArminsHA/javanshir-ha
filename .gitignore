@@ -1,0 +1,17 @@
+secrets.yaml
+ssl_info.txt
+harmony*.conf
+tts
+.*
+*.log
+*.log.*
+*.gz
+*.jpg
+*.png
+*.pyc
+!.gitignore
+blueprints
+known_devices.yaml
+home-assistant*.db*
+custom_components
+www/community

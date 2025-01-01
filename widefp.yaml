@@ -1,0 +1,24 @@
+title: Wide floor plan
+views:
+  - title: Example
+    icon: mdi:home-assistant
+    panel: true
+    cards:
+      - type: picture-elements
+        image: /local/Guldringen_wide02.png?v=5
+        #aspect_ratio: 100%
+        elements:
+          # Side view
+          - type: state-icon
+            entity: sensor.yr_symbol
+            style:
+              top: 10%
+              left: 30%
+          - type: state-icon
+            entity: light.hal_lamp
+            tap_action:
+              action: toggle
+            style:
+              top: 20%
+              left: 67%
+              #transform: scale(0.80,0.80)

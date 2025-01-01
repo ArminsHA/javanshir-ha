@@ -1,0 +1,862 @@
+title: Guldringen
+custom_header:
+  compact_mode: true
+# resources:
+#   - url: /hacsfiles/clock-weather-card/clock-weather-card.js
+#     type: module
+views:
+  # Overview tab
+  - icon: mdi:home-assistant
+    #id: kiosk_thermostat
+    #panel: true
+    cards:
+      # Floor plan
+      - type: picture-elements
+        image: /local/Guldringen_241231.png
+        aspect_ratio: 110%
+        elements:
+          # Side view
+          # - type: state-icon
+          #   entity: sensor.yr_symbol
+          #   style:
+          #     top: 76%
+          #     left: 40%
+          - type: state-icon
+            entity: weather.home
+            show_forecast: false
+            style:
+              top: 76%
+              left: 40%
+          - type: state-label
+            #prefix: "in: "
+            entity: sensor.average_inside_temp
+            style:
+              top: 76%
+              left: 6%
+              color: "#00000"
+              font-size: 80%
+              '-webkit-text-stroke': 1px darkgreen
+          - type: state-label
+            #prefix: "ut: "
+            entity: sensor.average_outside_temp
+            style:
+              top: 80%
+              left: 6%
+              color: "#00000"
+              font-size: 80%
+              '-webkit-text-stroke': 1px blue
+          - type: custom:config-template-card
+            variables:
+              - states['sensor.processor_temperature'].state 
+            entities:
+              - sensor.processor_temperature
+            element:
+              type: state-label
+              entity: sensor.blank_blank
+              prefix: '${vars[0]}'
+            style: 
+              top: 95%
+              left: 40%
+              font-size: 70%
+              '-webkit-text-stroke': 1px darkcyan
+          - type: image
+            entity: sensor.processor_temperature
+            image: /local/cpu_chip_gray.png
+            style:
+              top: 95%
+              left: 40%
+              width: 8.5%
+          # - type: state-label
+          #   prefix: "v: "
+          #   entity: sensor.weeknr
+          #   style:
+          #     top: 25%
+          #     left: 95%
+          #     color: "#00000"
+          #     #font-size: 85%
+          #     '-webkit-text-stroke': 1px darkred
+          - type: state-icon
+            entity: switch.ring_call_home
+            tap_action:
+              action: call-service
+              service: script.ring_call_home
+              # service: switch.turn_on
+              # target:
+              #   entity_id: switch.ring_call_home
+            style:
+              top: 84%
+              left: 40%
+          # Front door
+          - type: state-label
+            entity: sensor.frontdoor_temp_temperature
+            style:
+              top: 64%
+              left: 8%
+              color: "#00000"
+              font-size: 65%
+          - type: state-label
+            entity: sensor.frontdoor_temp_humidity
+            style:
+              top: 66%
+              left: 8%
+              color: "#00000"
+              font-size: 65%
+          # Hal
+          # - type: state-icon
+          #   entity: binary_sensor.main_door
+          #   style:
+          #     #'--paper-item-icon-active-color': '#2581ab'
+          #     #'--paper-item-icon-color': darkgrey
+          #     left: 12%
+          #     top: 40%
+          #     transform: 'translate(-50%, -50%) scale(1.4, 1.4)'
+          - type: state-icon
+            entity: binary_sensor.frontdoor
+            style:
+              # left: 6%
+              # top: 35%
+              left: 12%
+              top: 40%
+              #transform: scale(1.3,1.3)
+          - type: state-icon
+            entity: light.hallpanel1
+            tap_action:
+              action: toggle
+            style:
+              top: 38%
+              left: 23%
+              #transform: scale(0.80,0.80)
+          - type: state-icon
+            entity: light.hal_lamp
+            tap_action:
+              action: toggle
+            style:
+              top: 32%
+              left: 5%
+          - type: state-icon
+            entity: light.hall_switch_1
+            tap_action:
+              action: toggle
+            style:
+              top: 45%
+              left: 45%
+          - type: state-icon
+            entity: light.hal_stripe1
+            tap_action:
+              action: toggle
+            style:
+              top: 49%
+              left: 38%
+          - type: state-icon
+            entity: light.hal_stripe2
+            tap_action:
+              action: toggle
+            style:
+              top: 49%
+              left: 30%
+          # Bedroom
+          - type: state-icon
+            entity: light.bedroomlampikea
+            tap_action:
+              action: toggle
+            style:
+              top: 60%
+              left: 30%
+          - type: state-label
+            entity: sensor.bedroom_temp_temperature
+            style:
+              top: 64%
+              left: 17%
+              color: "#00000"
+              font-size: 65%
+          - type: state-label
+            entity: sensor.bedroom_temp_humidity
+            style:
+              top: 66%
+              left: 17%
+              color: "#00000"
+              font-size: 65%
+          - type:  state-icon
+            entity: switch.sovrum_1_switch_1
+            tap_action:
+              action: toggle
+            style:
+              top: 51.5%
+              left: 20%          
+          - type:  state-icon
+            entity: switch.floor
+            tap_action:
+              action: toggle
+            style:
+              top: 56%
+              left: 12%          
+          # kitchen
+          - type: state-label
+            entity: sensor.outbox_kitchen_temp_temperature
+            style:
+              top: 3%
+              left: 8%
+              font-size: 65%          
+          - type: state-label
+            entity: sensor.outbox_kitchen_temp_humidity
+            style:
+              top: 5%
+              left: 8%
+              font-size: 65%
+          - type: image
+            entity: switch.electric_cooktop
+            state_image:
+              "on": /local/induction_on.png
+              "off": /local/induction_off.png
+            style:
+              top: 18%
+              left: 50%
+              width: 5.1%
+          ## Christmas-mode: add          
+          - type: state-icon
+            entity: switch.windows_stars
+            tap_action:
+              action: toggle
+            style:
+              top: 10%
+              left: 12%
+          - type: state-icon
+            entity: switch.windows_stars
+            tap_action:
+              action: toggle
+            style:
+              top: 26%
+              left: 12%
+          ## Christmas-mode: add
+          - type: state-icon
+            entity: switch.front_outside
+            tap_action:
+              action: toggle
+            style:
+              top: 10%
+              left: 2%
+          - type: state-icon
+            entity: switch.front_outside
+            tap_action:
+              action: toggle
+            style:
+              top: 14%
+              left: 2%
+          - type: state-icon
+            entity: switch.front_outside
+            tap_action:
+              action: toggle
+            style:
+              top: 18%
+              left: 2%
+          #####################
+          - type: state-icon
+            entity: light.ensis_up1
+            tap_action:
+              action: toggle
+            style:
+              top: 12%
+              left: 22%
+              #transform: scale(0.80,0.80)
+          - type: state-icon
+            entity: light.ensis_dw1
+            tap_action:
+              action: toggle
+            style:
+              top: 17%
+              left: 22%
+              #transform: scale(0.80,0.80)
+          - type: state-icon
+            entity: light.kitchen_spots
+            tap_action:
+              action: toggle
+            style:
+              top: -1%
+              left: 31%
+              transform: scale(0.7,0.7)
+          # - type: state-icon
+          #   entity: light.kitchen_spot1
+          #   icon: mdi:spotlight
+          #   tap_action:
+          #     action: toggle
+          #   style:
+          #     top: -2%
+          #     left: 23%
+          #     transform: scale(0.50,0.50)
+          # - type: state-icon
+          #   entity: light.kitchen_spot2
+          #   icon: mdi:spotlight
+          #   tap_action:
+          #     action: toggle
+          #   style:
+          #     top: -2%
+          #     left: 28%
+          #     transform: scale(0.50,0.50)
+          # - type: state-icon
+          #   entity: light.kitchen_spot3
+          #   icon: mdi:spotlight
+          #   tap_action:
+          #     action: toggle
+          #   style:
+          #     top: -2%
+          #     left: 33%
+          #     transform: scale(0.50,0.50)
+          - type: state-icon
+            entity: light.ls_left
+            tap_action:
+              action: toggle
+            style:
+              top: -1%
+              left: 24%
+              transform: scale(0.80,0.80)
+          - type: state-icon
+            entity: light.ls_right
+            tap_action:
+              action: toggle
+            style:
+              top: 13%
+              left: 28%
+              transform: scale(0.80,0.80)
+          - type: state-icon
+            entity: light.panel1
+            tap_action:
+              action: toggle
+            style:
+              top: 11%
+              left: 38%
+              #transform: scale(0.95,0.95)
+          - type: state-label
+            entity: sensor.kyl_temp_temperature
+            style:
+              top: 3%
+              left: 44%
+              color: "#00000"
+              font-size: 50%
+          - type: state-label
+            entity: sensor.frys_temp_temperature
+            style:
+              top: 3%
+              left: 50%
+              color: "#00000"
+              font-size: 50%
+          - type: state-label
+            entity: sensor.kitchen_motion1_temperature
+            style:
+              top: 7%
+              left: 50%
+              color: "#00000"
+              font-size: 60%
+          - type: state-icon
+            entity: binary_sensor.kitchen_motion1_motion
+            style:
+              top: 6%
+              left: 46%
+              transform: scale(0.75,0.75)
+          # Living room
+          - type: state-icon
+            entity: switch.vardagsrum_switch_2
+            tap_action:
+              action: toggle
+            style:
+              top: 40%
+              left: 72%
+          ## Christmas-mode: add
+          - type: state-icon
+            entity: switch.window
+            tap_action:
+              action: toggle
+            style:
+              top: 25%
+              left: 85%
+          - type: state-icon
+            entity: switch.window
+            tap_action:
+              action: toggle
+            style:
+              top: 35%
+              left: 85%
+          ######################
+          ## Christmas-mode: remove
+          # - type: state-icon
+          #   entity: switch.gastrum_uttag_socket_1
+          #   tap_action:
+          #     action: toggle
+          #   style:
+          #     top: 52%
+          #     left: 84%
+          #####################
+          ## Christmas-mode: add
+          - type: image
+            entity: switch.gastrum_uttag_socket_1
+            tap_action:
+              action: toggle
+            state_image:
+              "on": /local/Tree_on.png
+              "off": /local/Tree_off.png
+            style:
+              top: 50%
+              left: 83%
+              width: 6%
+          ####################
+          - type: state-icon
+            entity: light.smart_led_strip
+            icon: mdi:drag-horizontal-variant
+            tap_action:
+              action: toggle
+            style:
+              top: 22.5%
+              left: 65%
+          - type: state-icon
+            entity: light.smart_led_strip
+            icon: mdi:drag-horizontal-variant
+            tap_action:
+              action: toggle
+            style:
+              top: 22.5%
+              left: 61%
+          - type: state-icon
+            entity: light.smart_led_strip
+            icon: mdi:drag-vertical-variant
+            tap_action:
+              action: toggle
+            style:
+              top: 24%
+              left: 58%
+          - type: state-icon
+            entity: light.smart_led_strip
+            icon: mdi:drag-vertical-variant
+            tap_action:
+              action: toggle
+            style:
+              top: 28%
+              left: 58%
+          - type: state-icon
+            entity: switch.vardagsrum_sidolampor_switch_1
+            tap_action:
+              action: toggle
+            style:
+              top: 35%
+              left: 53%
+              transform: scale(0.75,0.75)
+          # Sandra room
+          # - type: image
+          #   entity: light.panel1
+          #   state_image:
+          #     "on": /local/sandra02.png
+          #     "off": /local/sandra01.png
+          #   style:
+          #     top: 63%
+          #     left: 71.3%
+          #     width: 33%
+          - type: state-icon
+            entity: light.sandracol01
+            icon: mdi:ceiling-light
+            tap_action:
+              action: toggle
+            style:
+              top: 64%
+              left: 72%
+          - type:  state-icon
+            entity: switch.sandraroom_switch_1
+            tap_action:
+              action: toggle
+            style:
+              top: 57.5%
+              left: 68%
+          - type: state-label
+            entity: sensor.sandraroom_temp_temperature
+            style:
+              top: 57%
+              left: 84%
+              color: "#00000"
+              font-size: 65%
+          - type: state-label
+            entity: sensor.sandraroom_temp_humidity
+            style:
+              top: 59%
+              left: 84%
+              color: "#00000"
+              font-size: 65%
+          # Guest room
+          - type: state-icon
+            entity: light.drivare
+            tap_action:
+              action: toggle
+            style:
+              top: 4.5%
+              left: 58.5%
+          - type: state-icon
+            entity: light.gast_rum_switch_1
+            tap_action:
+              action: toggle
+            style:
+              top: 10%
+              left: 72%
+          - type: state-label
+            entity: sensor.guestroom_temp_temperature
+            style:
+              top: 3%
+              left: 84%
+              color: "#00000"
+              font-size: 65%
+          - type: state-label
+            entity: sensor.guestroom_temp_humidity
+            style:
+              top: 5%
+              left: 84%
+              color: "#00000"
+              font-size: 65%
+          - type: state-label
+            entity: sensor.guestroom_out_temp_temperature
+            style:
+              top: 3%
+              left: 92%
+              color: "#00000"
+              font-size: 65%
+          - type: state-label
+            entity: sensor.guestroom_out_temp_humidity
+            style:
+              top: 5%
+              left: 92%
+              color: "#00000"
+              font-size: 65%
+          # Guest toa
+          - type: state-icon
+            entity: light.gast_toa_switch_1
+            tap_action:
+              action: toggle
+            style:
+              top: 35%
+              left: 31%
+              transform: scale(0.70,0.70)
+          # laundry
+          - type: state-icon
+            entity: light.lan01
+            tap_action:
+              action: toggle
+            style:
+              top: 23%
+              left: 31%
+              transform: scale(0.70,0.70)
+          - type: state-icon
+            entity: switch.dryer
+            icon: mdi:tumble-dryer
+            style:
+              top: 32.5%
+              left: 40%
+          - type: state-icon
+            entity: switch.washer
+            icon: mdi:washing-machine
+            style:
+              top: 23%
+              left: 40%
+          # Basement
+          - type: state-icon
+            entity: light.stairway_lamp
+            tap_action:
+              action: toggle
+            style:
+              top: 50%
+              left: 46%
+              transform: scale(0.70,0.70)
+          - type: state-label
+            entity: sensor.stairway_sensor_temperature
+            style:
+              top: 67%
+              left: 52%
+              font-size: 60%
+          - type: state-icon
+            entity: binary_sensor.stairway_sensor_motion
+            style:
+              top: 66%
+              left: 47%
+              # top: 58%
+              # left: 52%
+              transform: scale(0.75,0.75)
+          - type: state-icon
+            entity: light.b1_lamp
+            tap_action:
+              action: toggle
+            style:
+              top: 88%
+              left: 56%
+      # Tracker locations
+      - type: horizontal-stack
+        cards:
+          - type: glance
+            show_name: false
+            theme: clear
+            entities:
+            - type: state-icon
+              title: "Armins IPhone"
+              entity: device_tracker.armins_iphone12
+              tap_action:
+                action: call-service
+                service: icloud.play_sound
+                data:
+                  account: armin.javanshir@icloud.com
+                  device_name: iPhone (10)
+            - type: state-icon
+              entity: sensor.iphone_10_battery_level
+            # - type: state-icon
+            #   entity: sensor.iphone_10_connection_type
+          - type: glance
+            show_name: false
+            theme: clear
+            entities:
+            - type: state-icon
+              title: "Malis IPhone"
+              entity: device_tracker.malis_iphone
+              tap_action:
+                action: call-service
+                service: icloud.play_sound
+                data:
+                  account: mali_kian@yahoo.com
+                  device_name: Mali's iPhone
+            - type: state-icon
+              entity: sensor.malis_iphone_battery_level
+            # - type: state-icon
+            #   entity: sensor.malis_iphone_connection_type
+          - type: glance
+            show_name: false
+            theme: clear
+            entities:
+            - type: state-icon
+              title: "Sandras Watch"
+              entity: device_tracker.sandra_watch_tracker_armin
+            - type: state-icon
+              entity: sensor.sandra_watch_battery_armin
+      - type: vertical-stack
+        cards:
+          # SMHI
+          # - type: custom:weather-chart-card
+          #   # title: SMHI Väder Guldringen 
+          #   entity: weather.smhi_home
+          #   # mode: daily
+          - type: "custom:atomic-calendar-revive"
+            name: Calendar
+            defaultMode: 'Calendar'
+            showProgressBar: true
+            CalEventHolidayColor: 'red'
+            fullDayEventText: 'All day'
+            showColors: true
+            # CalEventIcon1Color: "yellow "
+            # CalEventIcon2Color: "green "
+            # CalEventIcon3COlor: "white "
+            compactMode: true
+            hideFinishedEvents: false
+            showWeekNumber: true
+            enableModeChange: true
+            showNoEventDays: true
+            showNoEventsForToday: true
+            # showLastCalendarWeek: true
+            language: "sv"
+            # showWeekDay: true
+            # showDate: true
+            entities:
+              - entity: calendar.home
+                color: blue
+                showWeekNumber: true
+            # initial_view: dayGridDay
+            # card_mod:
+            #   style:
+            #     ha-full-calendar:
+            #       $: |
+            #         #calendar {
+            #           min-height: 50px !important;
+            #           font-size: 0.3em;
+            #           #color: red;
+            #         }
+            #         .fc-day-past .fc-daygrid-day-events {
+            #           opacity: 1 !important;
+            #         }
+            #         .fc .fc-daygrid-event {
+            #           padding 0px !important;
+            #           margin 0px !important;
+            #           height: 15px !important;
+            #         }
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:digital-clock'
+                card_mod:
+                  style: |
+                    ha-card {
+                      # background: gray;
+                      font-size: 0.7em;
+                      font-weight: none;
+                      color: blue;
+                      font-family: var(--ha-card-header-font-family, inherit);
+                    }
+                locale: 'swe'
+                dateFormat: 'cccc, dd LLL, v. WW'
+                timeFormat:
+                  hour: '2-digit'
+                  minute: '2-digit'
+              - type: 'custom:digital-clock'
+                locale: 'fa-IR'
+                timeZone: 'Asia/Tehran'
+                dateFormat:
+                  weekday: 'long'
+                  day: '2-digit'
+                  month: 'short'
+                  year: 'numeric'
+                timeFormat:
+                  hour: '2-digit'
+                  minute: '2-digit'
+                card_mod:
+                  style: |
+                    ha-card {
+                      font-size: 0.7em;
+                      font-weight: none;
+                      color: green;
+                      font-family: var(--ha-card-header-font-family, inherit);
+                    }
+          # - type: custom:clock-weather-card
+          #   entity: weather.home
+          #   locale: sv
+          #   weather_icon_type: fill
+          #   forecast_rows: 5
+          # Easy access card
+          - type: grid
+            square: false
+            columns: 4
+            cards:
+              - type: light
+                name: "Laundry"
+                entity: light.lan01
+                # card_mod:
+                #   style: |
+                #     ha-icon-button {
+                #       width: 30px !important;
+                #     }
+                #     ha-card {
+                #       --ha-card-background: #;
+                #       font-size: 5px;
+                #       border-radius: 5px;
+                #       box-shadow: rgba(97, 250, 179, 0.32) 0px 1px 16px;
+                #     }
+              - type: light
+                name: "Spots"
+                entity: light.kitchen_spots
+              - type: light
+                name: "Hal"
+                entity: light.hallpanel1
+              - type: button
+                name: All Off
+                icon: mdi:light-switch-off
+                show_state: true
+                tap_action:
+                  action: call-service
+                  service: homeassistant.turn_off
+                  data: {}
+                  target:
+                    entity_id:
+                      - group.kitchenspots
+                      - group.guestroom
+                      - group.laundy
+                      - group.kitchen
+                      - group.hallway
+                      - group.bedroom
+                      - group.guesttoilet
+                      - group.livingroom
+                      - group.sandraroom
+                      - group.outfront
+                      - group.stairway
+                      - group.basement
+          - type: horizontal-stack
+            cards:
+              - type: tile
+                entity: sensor.average_outside_temp
+                name: "Ut"
+              - type: tile
+                entity: sensor.average_inside_temp
+                name: "In"
+                color: red
+              - type: tile
+                entity: binary_sensor.main_door
+                name: "Dörr"
+  # Weather tab
+  - icon: mdi:weather-partly-rainy
+    id: weather
+    title: Weather
+    cards:
+    # YR meteogram image
+    - type: picture-entity
+      entity: camera.yr_weather
+      show_name: false
+      show_state: false
+    # SMHI
+    - type: weather-forecast
+      entity: weather.home
+    # Dark sky card, https://blog.darksky.net/forecast-embeds/
+    #- type: iframe
+    #  url: !secret darksky_url
+    # SMHI
+    - type: custom:weather-chart-card
+      title: SMHI Väder Guldringen 
+      entity: weather.smhi_home
+      mode: daily
+    - type: custom:clock-weather-card
+      entity: weather.home
+      #title: Guldringen
+      locale: sv
+      weather_icon_type: fill
+      forecast_rows: 5
+  # Map tab
+  - icon: mdi:map-search-outline
+    id: map
+    title: Kartan
+    cards:
+     - type: map
+       aspect_ratio: 150%
+       entities:
+         - device_tracker.armins_iphone12
+         - device_tracker.malis_iphone
+         - device_tracker.sandra_watch_tracker_armin
+         - zone.home
+         - zone.ericsson
+         - zone.sandra_forskola
+         - zone.branno_forskola
+         - zone.saltholmen
+  # Server tab
+  - icon: mdi:server-network
+    id: server
+    title: Server
+    cards:
+      # Server card
+      - type: entities
+        title: Server
+        show_header_toggle: false
+        entities:
+          - sensor.rt_ac2900_5960_kib_s_received
+          - sensor.rt_ac2900_5960_kib_s_sent
+      - type: entities
+        title: Printer
+        entities:
+          - sensor.samsung_m2070_series
+  # Media tab
+  - icon: mdi:music
+    id: media
+    title: Media
+    cards:
+      # Chromecast card
+      - type: entities
+        title: Chromecast
+        show_header_toggle: false
+        entities:
+          - media_player.vardagsrum_tv
+      # Google home card
+      - type: entities
+        title: Google home
+        show_header_toggle: false
+        entities:
+          - media_player.bedroom_speaker
+  # Bus tab
+  - icon: mdi:bus
+    id: vtbus
+    title: Västtrafik
+    cards:
+      # Västtrafik frame, https through proxy from http://wap.vasttrafik.se
+      - type: iframe
+        url: !secret vt_url
+        aspect_ratio: 100%

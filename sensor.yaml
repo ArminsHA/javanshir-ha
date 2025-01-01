@@ -1,0 +1,105 @@
+# Weather/RFXtrx sensors
+
+# Weather icon from yr
+## - platform: yr
+
+# RFXtrx433XL sensors, needs host restart for automatic_add change
+# - platform: rfxtrx
+#   automatic_add: false
+#   devices:
+#     0a520901950080b4280169:
+#       name: frys_temp
+#       data_type:
+#         - Humidity
+#         - Temperature
+#     0a520903f2000041460169:
+#       name: kyl_temp
+#       data_type:
+#         - Humidity
+#         - Temperature
+#     0a520900c600004c480369:
+#       name: frontdoor_temp
+#       data_type:
+#         - Humidity
+#         - Temperature
+#     0a520905470000e73e0169:
+#       name: bedroom_temp
+#       data_type:
+#         - Humidity
+#         - Temperature
+#     0a520904690000e53d0169:
+#       name: guestroom_temp
+#       data_type:
+#         - Humidity
+#         - Temperature
+#     0a520901230000e0430159:
+#       name: sandraroom_temp
+#       data_type:
+#         - Humidity
+#         - Temperature
+
+
+# - platform: command_line
+#   name: CPU Temperature
+#   command: "cat /sys/class/thermal/thermal_zone0/temp"
+#   # If errors occur, make sure configuration file is encoded as UTF-8
+#   unit_of_measurement: "°C"
+#   value_template: '{{ value | multiply(0.001) | round(1) }}'
+
+# Configuring System Monitor using YAML is being removed, 2024.7.0.
+# - platform: systemmonitor
+#   resources:
+#     - type: processor_temperature
+
+- platform: average
+  name: 'average_outside_temp'
+  precision: 1
+  entities:
+    - sensor.frontdoor_temp_temperature
+    - sensor.guestroom_out_temp_temperature
+    - sensor.outbox_kitchen_temp_temperature
+
+- platform: average
+  name: 'average_inside_temp'
+  precision: 1
+  entities:
+    - sensor.bedroom_temp_temperature
+    - sensor.sandraroom_temp_temperature
+    - sensor.guestroom_temp_temperature
+    - sensor.kitchen_motion1_temperature
+
+- platform: template
+  sensors:
+    weeknr:
+      friendly_name: "Week number"
+      value_template: >
+        {{ now().strftime("%W") }}
+
+- platform: template
+  sensors:
+    blank_blank:
+      friendly_name: "Blank Blank"
+      value_template: " "
+
+# - platform: template
+#   sensors:
+#     bedroom_temp:
+#       friendly_name: "Bedroom temperature"
+#       unit_of_measurement: '°'
+#       icon_template: mdi:thermometer
+#       value_template: "{{ '%0.1f'|format(states('sensor.bedroom_temp_temperature')|float) }}"
+#     kyl_temp:
+#       friendly_name: "Kyl temperature"
+#       unit_of_measurement: '°'
+#       icon_template: mdi:thermometer
+#       value_template: "{{ '%0.1f'|format(states('sensor.kyl_temp_temperature')|float) }}"
+#     frys_temp:
+#       friendly_name: "Kyl temperature"
+#       unit_of_measurement: '°'
+#       icon_template: mdi:thermometer
+#       value_template: "{{ '%0.1f'|format(states('sensor.frys_temp_temperature')|float) }}"
+#     kitchen_motion_temp:
+#       friendly_name: "Kitchen motion temperature"
+#       unit_of_measurement: '°'
+#       icon_template: mdi:thermometer
+#       value_template: "{{ '%0.1f'|format(states('sensor.kitchen_motion1_temperature')|float) }}"

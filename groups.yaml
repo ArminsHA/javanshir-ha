@@ -1,0 +1,76 @@
+kitchenspots:
+  name: KitchenSpots
+  entities:
+    - light.kitchen_spot1
+    - light.kitchen_spot2
+    - light.kitchen_spot3
+
+guestroom:
+  name: Guestroom
+  entities:
+    - light.gast_rum_switch_1
+    - light.lan01
+
+laundy:
+  name: Laundry
+  entities:
+    - light.lan01
+
+kitchen:
+  name: Kitchen
+  entities:
+    - light.panel1
+    - light.ls_right
+    - light.ls_left
+    - light.ensis_dw1
+    - light.ensis_up1
+    - switch.windows_stars
+
+hallway:
+  name: Hallway
+  entities:
+    - light.hallpanel1
+    - light.hall_switch_1
+    - light.hal_stripe1
+    - light.hal_stripe2
+
+bedroom:
+  name: Bedroom
+  entities:
+    - light.bedroomlampikea
+    - switch.floor
+
+guesttoilet:
+  name: Guest toilet
+  entities:
+    - light.gast_toa_switch_1
+
+livingroom:
+  name: Livingroom
+  entities:
+    - switch.vardagsrum_switch_1
+    - switch.vardagsrum_switch_2
+    - switch.window
+    - switch.gastrum_uttag_socket_1
+
+sandraroom:
+  name: Sandra room
+  entities:
+    - light.sandracol01
+
+outfront:
+  name: Outside frontdoor
+  entities:
+    - light.hal_lamp
+    - switch.front_outside
+
+stairway:
+  name: Stairway
+  entities:
+    - light.stairway_lamp
+    - light.b1_lamp
+
+basement:
+  name: Basement
+  entities:
+    - light.b1_lamp
