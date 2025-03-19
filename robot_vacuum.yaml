@@ -1,0 +1,8 @@
+type: custom:xiaomi-vacuum-map-card
+title: Roborock Vacuum Map Card
+preset_name: Live map
+entity: vacuum.roborock_s6
+map_source:
+  image: image.roborock_s6_firstfloor
+calibration_source:
+  camera: true

@@ -813,6 +813,7 @@ views:
          - device_tracker.armins_iphone12
          - device_tracker.malis_iphone
          - device_tracker.sandra_watch_tracker_armin
+         - device_tracker.rav4_parking_location
          - zone.home
          - zone.ericsson
          - zone.sandra_forskola
@@ -860,3 +861,9 @@ views:
       - type: iframe
         url: !secret vt_url
         aspect_ratio: 100%
+  # Vacuum tab
+  - icon: mdi:robot-vacuum
+    id: vacuum
+    title: Roborock Vacuum
+    cards:
+      - !include robot_vacuum.yaml

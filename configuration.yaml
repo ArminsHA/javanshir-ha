@@ -65,6 +65,8 @@ lovelace:
       type: module
     - url: /hacsfiles/atomic-calendar-revive/atomic-calendar-revive.js
       type: module
+    - url: /hacsfiles/lovelace-xiaomi-vacuum-map-card/xiaomi-vacuum-map-card.js
+      type: module
   # Add more dashboards
   dashboards:
     lovelace-widefp: # Needs to contain a hyphen (-)
@@ -128,8 +130,12 @@ sun:
 # Support person component
 person:
 
+# Enable logging
+logger:
+  default: info
+
 # Support python scripts
-#python_script:
+python_script:
 
 # System health info support
 system_health:

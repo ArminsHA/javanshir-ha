@@ -52,6 +52,7 @@
 #     - type: processor_temperature
 
 - platform: average
+  unique_id: 'average_outside_temp_uid'
   name: 'average_outside_temp'
   precision: 1
   entities:
@@ -80,6 +81,16 @@
     blank_blank:
       friendly_name: "Blank Blank"
       value_template: " "
+
+- platform: template
+  sensors:
+    faulty_sens:
+      friendly_name: "Sensor guesttool out temp fault"
+      unit_of_measurement: "C"
+      device_class: temperature
+      value_template: >
+        {% set src = states('sensor.guestroom_out_temp_temperature')|float(0) %}
+        {{ src if src > 0 else none }}
 
 # - platform: template
 #   sensors:
