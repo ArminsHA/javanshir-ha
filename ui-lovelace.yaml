@@ -213,42 +213,42 @@ views:
               left: 50%
               width: 5.1%
           ## Christmas-mode: add          
-          - type: state-icon
-            entity: switch.windows_stars
-            tap_action:
-              action: toggle
-            style:
-              top: 10%
-              left: 12%
-          - type: state-icon
-            entity: switch.windows_stars
-            tap_action:
-              action: toggle
-            style:
-              top: 26%
-              left: 12%
-          ## Christmas-mode: add
-          - type: state-icon
-            entity: switch.front_outside
-            tap_action:
-              action: toggle
-            style:
-              top: 10%
-              left: 2%
-          - type: state-icon
-            entity: switch.front_outside
-            tap_action:
-              action: toggle
-            style:
-              top: 14%
-              left: 2%
-          - type: state-icon
-            entity: switch.front_outside
-            tap_action:
-              action: toggle
-            style:
-              top: 18%
-              left: 2%
+          # - type: state-icon
+          #   entity: switch.windows_stars
+          #   tap_action:
+          #     action: toggle
+          #   style:
+          #     top: 10%
+          #     left: 12%
+          # - type: state-icon
+          #   entity: switch.windows_stars
+          #   tap_action:
+          #     action: toggle
+          #   style:
+          #     top: 26%
+          #     left: 12%
+          # ## Christmas-mode: add
+          # - type: state-icon
+          #   entity: switch.front_outside
+          #   tap_action:
+          #     action: toggle
+          #   style:
+          #     top: 10%
+          #     left: 2%
+          # - type: state-icon
+          #   entity: switch.front_outside
+          #   tap_action:
+          #     action: toggle
+          #   style:
+          #     top: 14%
+          #     left: 2%
+          # - type: state-icon
+          #   entity: switch.front_outside
+          #   tap_action:
+          #     action: toggle
+          #   style:
+          #     top: 18%
+          #     left: 2%
           #####################
           - type: state-icon
             entity: light.ensis_up1
@@ -361,42 +361,42 @@ views:
               top: 40%
               left: 72%
           ## Christmas-mode: add
-          - type: state-icon
-            entity: switch.window
-            tap_action:
-              action: toggle
-            style:
-              top: 25%
-              left: 85%
-          - type: state-icon
-            entity: switch.window
-            tap_action:
-              action: toggle
-            style:
-              top: 35%
-              left: 85%
-          ######################
-          ## Christmas-mode: remove
           # - type: state-icon
-          #   entity: switch.gastrum_uttag_socket_1
+          #   entity: switch.window
           #   tap_action:
           #     action: toggle
           #   style:
-          #     top: 52%
-          #     left: 84%
-          #####################
-          ## Christmas-mode: add
-          - type: image
+          #     top: 25%
+          #     left: 85%
+          # - type: state-icon
+          #   entity: switch.window
+          #   tap_action:
+          #     action: toggle
+          #   style:
+          #     top: 35%
+          #     left: 85%
+          ######################
+          ## Christmas-mode: remove
+          - type: state-icon
             entity: switch.gastrum_uttag_socket_1
             tap_action:
               action: toggle
-            state_image:
-              "on": /local/Tree_on.png
-              "off": /local/Tree_off.png
             style:
-              top: 50%
-              left: 83%
-              width: 6%
+              top: 52%
+              left: 84%
+          #####################
+          ## Christmas-mode: add
+          # - type: image
+          #   entity: switch.gastrum_uttag_socket_1
+          #   tap_action:
+          #     action: toggle
+          #   state_image:
+          #     "on": /local/Tree_on.png
+          #     "off": /local/Tree_off.png
+          #   style:
+          #     top: 50%
+          #     left: 83%
+          #     width: 6%
           ####################
           - type: state-icon
             entity: light.smart_led_strip
