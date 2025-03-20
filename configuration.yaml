@@ -140,37 +140,6 @@ python_script:
 # System health info support
 system_health:
 
-# The rfxtrx integration does not support YAML configuration
-# rfxtrx:
-#  device: /dev/ttyUSB1
-#  automatic_add: false
-#  debug: false
-#  devices:
-#    # frys_temp
-#    0a520901950080b4280169:
-#    # kyl_temp
-#    0a520903f2000041460169:
-#    # frontdoor_temp
-#    0a520900c600004c480369:
-#    # bedroom_temp
-#    0a520905470000e73e0169:
-#    # guestroom_temp
-#    0a520904690000e53d0169:
-#    # guestroom_out_temp
-#    0a520913a80000f53c0169:
-#    # sandraroom_temp
-#    0a520901230000e0430159:
-#    # main_door
-#    0b11004a02ae03fa10010f60:
-#      device_class: door
-
-# The Generic IP Camera YAML configuration is being removed
-# camera:
-#  - platform: generic
-#    name: Yr Weather
-#    still_image_url: !secret yr_svg_url
-#    content_type: 'image/svg+xml'
-
 # Scene selector
 input_select:
   scen:
@@ -259,7 +228,6 @@ binary_sensor: !include binary_sensor.yaml
 #switch: !include switch.yaml
 light: !include light.yaml
 #google_assistant: !include google_assistant.yaml
-#automation old: !include automation_manual.yaml
 #script: !include script.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
