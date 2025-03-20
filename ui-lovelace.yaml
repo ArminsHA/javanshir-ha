@@ -15,12 +15,6 @@ views:
         image: /local/Guldringen_241231.png
         aspect_ratio: 110%
         elements:
-          # Side view
-          # - type: state-icon
-          #   entity: sensor.yr_symbol
-          #   style:
-          #     top: 76%
-          #     left: 40%
           - type: state-icon
             entity: weather.home
             show_forecast: false
@@ -442,8 +436,8 @@ views:
           # - type: image
           #   entity: light.panel1
           #   state_image:
-          #     "on": /local/sandra02.png
-          #     "off": /local/sandra01.png
+          #     "on": /local/sandra_room_on.png
+          #     "off": /local/sandra_room_off.png
           #   style:
           #     top: 63%
           #     left: 71.3%
