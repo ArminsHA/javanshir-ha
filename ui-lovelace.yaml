@@ -198,7 +198,7 @@ views:
               left: 8%
               font-size: 65%
           - type: image
-            entity: switch.electric_cooktop
+            entity: binary_sensor.electric_cooktop_power
             state_image:
               "on": /local/induction_on.png
               "off": /local/induction_off.png
@@ -533,13 +533,13 @@ views:
               left: 31%
               transform: scale(0.70,0.70)
           - type: state-icon
-            entity: switch.dryer
+            entity: binary_sensor.dryer_power
             icon: mdi:tumble-dryer
             style:
               top: 32.5%
               left: 40%
           - type: state-icon
-            entity: switch.washer
+            entity: binary_sensor.washer_power
             icon: mdi:washing-machine
             style:
               top: 23%
