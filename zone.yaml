@@ -14,9 +14,9 @@
   longitude: 11.779811
   radius: 250
   icon: mdi:school
-- name: Sandra förskola
-  latitude: 57.691583
-  longitude: 11.919200
+- name: Påvelund skolan
+  latitude: 57.666740
+  longitude: 11.876520
   icon: mdi:school
 - name: Saltholmen
   latitude: 57.661069

@@ -129,6 +129,9 @@ person:
 # Enable logging
 logger:
   default: info
+  #logs:
+  #  homeassistant.components.rfxtrx: debug
+  #  RFXtrx: debug
 
 # Support python scripts
 python_script:

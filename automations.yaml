@@ -276,3 +276,37 @@
     - conditions: []
       sequence: []
   mode: single
+- id: '1745094415477'
+  alias: Kitchen sensor off
+  description: ''
+  triggers:
+  - device_id: 78b0ecdbb03d411ab4a7c25dd3a273d4
+    domain: hue
+    type: long_press
+    subtype: 4
+    unique_id: 18f45672-860e-43eb-b353-a3297cf90981
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: 853b7d986bf443759115271ea303c5fe
+    entity_id: 538c956b1cf91da0b8726d0fb2094d98
+    domain: switch
+  mode: single
+- id: '1745094710781'
+  alias: Kitchen sensor on
+  description: ''
+  triggers:
+  - device_id: 78b0ecdbb03d411ab4a7c25dd3a273d4
+    domain: hue
+    type: long_press
+    subtype: 1
+    unique_id: fd835ca2-80d7-4c48-b169-3b8034899430
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_on
+    device_id: 853b7d986bf443759115271ea303c5fe
+    entity_id: 538c956b1cf91da0b8726d0fb2094d98
+    domain: switch
+  mode: single
