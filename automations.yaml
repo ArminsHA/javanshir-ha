@@ -1,9 +1,8 @@
 - id: '1701627604961'
   alias: Doorbell automation
   description: ''
-  trigger:
-  - platform: device
-    type: turned_on
+  triggers:
+  - type: turned_on
     device_id: 09a7246df2c3b4bb959dc10f6179f8d9
     entity_id: d3cbb5160ae1b75f1ede7ba980180987
     domain: switch
@@ -11,20 +10,19 @@
       hours: 0
       minutes: 0
       seconds: 2
-  condition: []
-  action:
+    trigger: device
+  conditions: []
+  actions:
   - type: turn_off
     device_id: 09a7246df2c3b4bb959dc10f6179f8d9
     entity_id: d3cbb5160ae1b75f1ede7ba980180987
     domain: switch
-  - service: notify.mobile_app_iphone_10
-    data:
+  - action: notify.mobile_app_arminiphone16
+    data: {}
+  - data:
       message: Det ringer på dörren!
       title: Entré
-  - service: notify.mobile_app_malis_iphone
-    data:
-      message: Det ringer på dörren!
-      title: Entré
+    action: notify.mobile_app_malis_iphone
   mode: single
 - id: '1701628493880'
   alias: Turn off ring_call_home
@@ -148,7 +146,7 @@
     zone: zone.home
     event: enter
     trigger: zone
-  - entity_id: device_tracker.armins_iphone12
+  - entity_id: device_tracker.arminiphone16
     zone: zone.home
     event: enter
     trigger: zone

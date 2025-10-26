@@ -804,7 +804,7 @@ views:
      - type: map
        aspect_ratio: 150%
        entities:
-         - device_tracker.armins_iphone12
+         - device_tracker.arminiphone16
          - device_tracker.malis_iphone
          - device_tracker.sandra_watch_tracker_armin
          - device_tracker.rav4_parking_location
