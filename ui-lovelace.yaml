@@ -583,7 +583,7 @@ views:
             entities:
             - type: state-icon
               title: "Armins IPhone"
-              entity: device_tracker.armins_iphone12
+              entity: device_tracker.arminiphone16
               tap_action:
                 action: call-service
                 service: icloud.play_sound
@@ -591,7 +591,7 @@ views:
                   account: armin.javanshir@icloud.com
                   device_name: iPhone (10)
             - type: state-icon
-              entity: sensor.iphone_10_battery_level
+              entity: sensor.arminiphone16_battery_level
             # - type: state-icon
             #   entity: sensor.iphone_10_connection_type
           - type: glance
