@@ -310,3 +310,20 @@
     entity_id: 538c956b1cf91da0b8726d0fb2094d98
     domain: switch
   mode: single
+- id: '1756494347056'
+  alias: Temp - Kitchen motion
+  description: ''
+  triggers:
+  - type: motion
+    device_id: 853b7d986bf443759115271ea303c5fe
+    entity_id: 9a0ca1c25a913af9c0a81a6f6361bbef
+    domain: binary_sensor
+    trigger: device
+  conditions: []
+  actions:
+  - action: notify.notify
+    metadata: {}
+    data:
+      message: Kitchen movement!
+      title: Kitchen
+  mode: single
