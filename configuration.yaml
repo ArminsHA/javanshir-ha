@@ -231,6 +231,7 @@ group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 #scene: !include scenes.yaml
+template: !include template.yaml
 
 #icloud:
 #  - username: !secret armin_icloud_usr

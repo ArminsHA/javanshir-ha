@@ -1,0 +1,20 @@
+- binary_sensor:
+  - name: "People Home"
+    device_class: presence
+    state: >
+      {{ is_state('person.armin', 'home') or
+          is_state('person.mali', 'home') }}
+
+  - name: "Frontdoor"
+    state: >-
+      {% if is_state("binary_sensor.main_door", "on") %}
+        Open
+      {% else %}
+        Closed
+      {% endif %}
+    icon: >-
+      {% if is_state("binary_sensor.main_door", "on") %}
+        mdi:door-open
+      {% else %}
+        mdi:door-closed
+      {% endif %}
