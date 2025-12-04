@@ -18,3 +18,17 @@
       {% else %}
         mdi:door-closed
       {% endif %}
+- sensor:
+  - name: "Week number"
+    state: >
+      {{ now().strftime("%W") }}
+
+  - name: "Blank Blank"
+    state: " "
+
+  - name: "Sensor guesttool out temp fault"
+    unit_of_measurement: "C"
+    device_class: temperature
+    state: >
+      {% set src = states('sensor.guestroom_out_temp_temperature')|float(0) %}
+      {{ src if src > 0 else none }}

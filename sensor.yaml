@@ -69,29 +69,6 @@
     - sensor.guestroom_temp_temperature
     - sensor.kitchen_motion1_temperature
 
-- platform: template
-  sensors:
-    weeknr:
-      friendly_name: "Week number"
-      value_template: >
-        {{ now().strftime("%W") }}
-
-- platform: template
-  sensors:
-    blank_blank:
-      friendly_name: "Blank Blank"
-      value_template: " "
-
-- platform: template
-  sensors:
-    faulty_sens:
-      friendly_name: "Sensor guesttool out temp fault"
-      unit_of_measurement: "C"
-      device_class: temperature
-      value_template: >
-        {% set src = states('sensor.guestroom_out_temp_temperature')|float(0) %}
-        {{ src if src > 0 else none }}
-
 # - platform: template
 #   sensors:
 #     bedroom_temp:
