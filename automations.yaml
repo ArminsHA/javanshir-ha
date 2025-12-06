@@ -18,7 +18,9 @@
     entity_id: d3cbb5160ae1b75f1ede7ba980180987
     domain: switch
   - action: notify.mobile_app_arminiphone16
-    data: {}
+    data:
+      message: Det ringer på dörren!
+      title: Entré
   - data:
       message: Det ringer på dörren!
       title: Entré
@@ -319,9 +321,9 @@
     trigger: device
   conditions: []
   actions:
-  - action: notify.notify
+  - action: notify.mobile_app_arminiphone16
     metadata: {}
     data:
-      message: Kitchen movement!
+      message: Kitchen movement
       title: Kitchen
   mode: single
