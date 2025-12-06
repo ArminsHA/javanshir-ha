@@ -600,7 +600,7 @@ views:
             entities:
             - type: state-icon
               title: "Malis IPhone"
-              entity: device_tracker.malis_iphone
+              entity: device_tracker.malisiphone17
               tap_action:
                 action: call-service
                 service: icloud.play_sound
@@ -608,9 +608,9 @@ views:
                   account: mali_kian@yahoo.com
                   device_name: Mali's iPhone
             - type: state-icon
-              entity: sensor.malis_iphone_battery_level
+              entity: sensor.malisiphone17_battery_level
             # - type: state-icon
-            #   entity: sensor.malis_iphone_connection_type
+            #   entity: sensor.malisiphone17_connection_type
           - type: glance
             show_name: false
             theme: clear
@@ -805,7 +805,7 @@ views:
        aspect_ratio: 150%
        entities:
          - device_tracker.arminiphone16
-         - device_tracker.malis_iphone
+         - device_tracker.malisiphone17
          - device_tracker.sandra_watch_tracker_armin
          - device_tracker.rav4_parking_location
          - zone.home

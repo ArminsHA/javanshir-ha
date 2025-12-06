@@ -1,7 +1,7 @@
 device_tracker.arminiphone16:
   friendly_name: Armin
   entity_picture: /local/armin.png?v=1
-device_tracker.malis_iphone:
+device_tracker.malisiphone17:
   friendly_name: Mali
   entity_picture: /local/mali.png?v=1
 # Hal

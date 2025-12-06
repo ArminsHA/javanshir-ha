@@ -22,7 +22,7 @@
   - data:
       message: Det ringer på dörren!
       title: Entré
-    action: notify.mobile_app_malis_iphone
+    action: notify.mobile_app_malisiphone17
   mode: single
 - id: '1701628493880'
   alias: Turn off ring_call_home
@@ -142,7 +142,7 @@
   alias: Enter-home-hall-light
   description: ''
   triggers:
-  - entity_id: device_tracker.malis_iphone
+  - entity_id: device_tracker.malisiphone17
     zone: zone.home
     event: enter
     trigger: zone
