@@ -378,6 +378,14 @@ views:
             style:
               top: 52%
               left: 84%
+          - type: state-icon
+            entity: switch.window
+            icon: mdi:harddisk
+            tap_action:
+              action: toggle
+            style:
+              top: 25%
+              left: 85%
           #####################
           ## Christmas-mode: add
           # - type: image
