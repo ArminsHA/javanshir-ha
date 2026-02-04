@@ -42,7 +42,7 @@ frontend:
   #   - /local/hass-my_icons.js
 
 lovelace:
-  mode: yaml
+  resource_mode: yaml
   resources:
     # https://github.com/thomasloven/lovelace-auto-entities/
     - url: /local/auto-entities.js
