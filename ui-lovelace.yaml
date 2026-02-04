@@ -625,9 +625,9 @@ views:
             entities:
             - type: state-icon
               title: "Sandras Watch"
-              entity: device_tracker.sandra_watch_tracker_armin
+              entity: device_tracker.a_iphone
             - type: state-icon
-              entity: sensor.sandra_watch_battery_armin
+              entity: sensor.a_iphone_watch_battery_level
       - type: vertical-stack
         cards:
           # SMHI
@@ -814,7 +814,7 @@ views:
        entities:
          - device_tracker.arminiphone16
          - device_tracker.malisiphone17
-         - device_tracker.sandra_watch_tracker_armin
+         - device_tracker.a_iphone
          - device_tracker.rav4_parking_location
          - zone.home
          - zone.ericsson
