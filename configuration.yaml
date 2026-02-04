@@ -69,6 +69,12 @@ lovelace:
       type: module
   # Add more dashboards
   dashboards:
+    lovelace:
+      mode: yaml
+      filename: ui-lovelace.yaml
+      title: Overview
+      icon: mdi:view-dashboard
+      show_in_sidebar: true
     lovelace-widefp: # Needs to contain a hyphen (-)
       mode: yaml
       filename: widefp.yaml
